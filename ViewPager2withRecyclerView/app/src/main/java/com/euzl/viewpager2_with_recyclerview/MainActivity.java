@@ -18,10 +18,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initViewPager();
+    }
+
+    public void initViewPager() {
         pagerAdapter = new PagerAdapter(this);
         viewPager = findViewById(R.id.viewpager);
         viewPager.setAdapter(pagerAdapter);
-
     }
 
     public class PagerAdapter extends FragmentStateAdapter {
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return 100;
+            return 30;
         }
     }
 }
