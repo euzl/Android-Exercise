@@ -8,9 +8,12 @@
 - `GridLayout`도 잘된당 (~~내 달력코드는 뭐가 문제였을까... list갱신에 대체 무슨일이...~~)
 
 ### 확인필요
-- `fragment`로 객체 넘겨서 사용
-- 무한 스크롤 구현!!
-- 중간부터 시작할 때 휘리릭 안 넘어가는 방법
+- [ ] `fragment`로 객체 넘겨서 사용
+- [ ] 무한 스크롤 구현!!
+- [X] 중간부터 시작할 때 휘리릭 안 넘어가는 방법  
+    ```java
+    viewPager.setCurrentItem(50, false); // 두 번째 파라미터를 false로 하면 됨
+    ```
 
 ### 기타 (gif)
 |LinearLayout|GridLayout|
