@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/buttonSetText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="텍스트 변경 (set text 기능 관련)" />
+
+    <Button
+        android:id="@+id/buttonNotModify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="텍스트 변경 막기" />
+
+    <Button
+        android:id="@+id/buttonTextChangeEvent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="텍스트 변경 이벤트 감지 (Text watcher)"
+        tools:layout_editor_absoluteX="137dp"
+        tools:layout_editor_absoluteY="37dp" />
+
+</LinearLayout>
