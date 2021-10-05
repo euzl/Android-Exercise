@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/clearButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_clear" />
+
+        <ImageButton
+            android:id="@+id/paletteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_palette" />
+
+        <ImageButton
+            android:id="@+id/eraserButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_eraser" />
+
+        <ImageButton
+            android:id="@+id/polyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_poly" />
+
+    </LinearLayout>
+
+    <com.euzl.customdrawing.Draw
+        android:id="@+id/draw"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/paletteLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" >
+
+        <Button
+            android:id="@+id/redButton"
+            android:layout_width="@dimen/custom_button_size"
+            android:layout_height="@dimen/custom_button_size"
+            android:layout_marginHorizontal="@dimen/custom_button_margin_size"
+            android:backgroundTint="@android:color/holo_red_dark" />
+
+        <Button
+            android:id="@+id/blackButton"
+            android:layout_width="@dimen/custom_button_size"
+            android:layout_height="@dimen/custom_button_size"
+            android:layout_marginHorizontal="@dimen/custom_button_margin_size"
+            android:backgroundTint="@android:color/black" />
+
+        <Button
+            android:id="@+id/blueButton"
+            android:layout_width="@dimen/custom_button_size"
+            android:layout_height="@dimen/custom_button_size"
+            android:layout_marginHorizontal="@dimen/custom_button_margin_size"
+            android:backgroundTint="@color/design_default_color_primary_dark" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/polyLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" >
+
+        <ImageButton
+            android:id="@+id/freeButton"
+            android:layout_width="@dimen/custom_button_size"
+            android:layout_height="@dimen/custom_button_size"
+            android:layout_marginHorizontal="@dimen/custom_button_margin_size"
+            android:background="@drawable/ic_free" />
+
+        <ImageButton
+            android:id="@+id/circleButton"
+            android:layout_width="@dimen/custom_button_size"
+            android:layout_height="@dimen/custom_button_size"
+            android:scaleType="center"
+            android:layout_marginHorizontal="@dimen/custom_button_margin_size"
+            android:background="@drawable/ic_circle" />
+
+        <ImageButton
+            android:id="@+id/squareButton"
+            android:layout_width="@dimen/custom_button_size"
+            android:layout_height="@dimen/custom_button_size"
+            android:layout_marginHorizontal="@dimen/custom_button_margin_size"
+            android:background="@drawable/ic_square" />
+    </LinearLayout>
+
+</LinearLayout>
