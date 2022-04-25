@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" >
+
+    <data>
+        <variable
+            name="activity"
+            type="com.euzl.appwidget.AppWidgetConfigure" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AppWidgetConfigure">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="배경 투명도 조절 : 100%"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.26" />
+
+        <include
+            android:id="@+id/widgetPreview"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            layout="@layout/example_appwidget"
+            app:layout_constraintBottom_toTopOf="@id/seekBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView"/>
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:max="255"
+            android:progress="255"
+            android:progressTint="@color/purple_500"
+            android:thumbTint="@color/purple_700"
+            android:onProgressChanged="@{activity.onSeekBarProgressChanged}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/widgetPreview" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="30dp"
+            android:onClick="@{activity::onConfirmClick}"
+            android:text="설정완료"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="30dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
