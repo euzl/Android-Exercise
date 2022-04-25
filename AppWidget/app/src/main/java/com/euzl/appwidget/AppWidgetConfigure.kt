@@ -5,9 +5,10 @@ import android.appwidget.AppWidgetManager
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
+import android.widget.LinearLayout
+import android.widget.RemoteViews
+import android.widget.SeekBar
 import androidx.databinding.DataBindingUtil
 import com.euzl.appwidget.databinding.ActivityAppWidgetConfigureBinding
 
@@ -38,19 +39,24 @@ class AppWidgetConfigure() : AppCompatActivity() {
         if (appWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID) {
             finish()
         }
+    }
 
-        // remote view를 통해 레이아웃 업데이트
-//        RemoteView(packageName, R.layout.example_appwidget).also { views ->
-//            appWidgetManager.updateAppWidget(appWidgetId, views)
-//        }
-
+    fun onSeekBarProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+        binding.textView.text = "배경 투명도 조절 : ${progress*100/255}%"
+        binding.widgetPreview.background.alpha = progress
 
     }
 
     fun onConfirmClick(view: View) {
         val appWidgetManager: AppWidgetManager = AppWidgetManager.getInstance(this)
-        // ExampleAppWidgetProvider do something
 
+        // remote view를 통해 레이아웃 업데이트
+        RemoteViews(packageName, R.layout.example_appwidget).also { views ->
+            views.setTextViewText(R.id.textView, "투명도 ${binding.seekBar.progress*100/255}%")
+            // TODO: 배경색 투명도 조절
+            appWidgetManager.updateAppWidget(appWidgetId, views)
+
+        }
 
         // app widget id 를 포함한 결과 반환
         val resultValue = Intent().apply {
