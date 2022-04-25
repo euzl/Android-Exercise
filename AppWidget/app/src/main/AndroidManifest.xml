@@ -11,7 +11,11 @@
         android:theme="@style/Theme.AppWidget">
         <activity
             android:name=".AppWidgetConfigure"
-            android:exported="false" />
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

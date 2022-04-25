@@ -3,6 +3,7 @@
     android:minWidth="140dp"
     android:minHeight="40dp"
     android:initialLayout="@layout/example_appwidget"
+    android:configure="com.euzl.appwidget.AppWidgetConfigure"
     android:resizeMode="horizontal"
     android:widgetCategory="home_screen">
 </appwidget-provider>
