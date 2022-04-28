@@ -19,25 +19,33 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             android:text="배경 투명도 조절 : 100%"
             android:textColor="@color/black"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.26" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivWallPaper"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView"
+            app:layout_constraintVertical_bias="0.36" />
 
         <include
             android:id="@+id/widgetPreview"
-            android:layout_width="250dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="30dp"
             layout="@layout/example_appwidget"
-            app:layout_constraintBottom_toTopOf="@id/seekBar"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="250dp"
+            android:layout_height="200dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivWallPaper"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivWallPaper" />
 
         <SeekBar
             android:id="@+id/seekBar"
@@ -45,15 +53,16 @@
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
             android:max="255"
+            android:onProgressChanged="@{activity.onSeekBarProgressChanged}"
             android:progress="255"
             android:progressTint="@color/purple_500"
             android:thumbTint="@color/purple_700"
-            android:onProgressChanged="@{activity.onSeekBarProgressChanged}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/widgetPreview" />
+            app:layout_constraintTop_toBottomOf="@+id/ivWallPaper" />
 
         <Button
+            android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_margin="30dp"
