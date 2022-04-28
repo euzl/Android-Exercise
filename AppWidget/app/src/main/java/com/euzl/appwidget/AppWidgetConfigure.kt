@@ -3,12 +3,17 @@ package com.euzl.appwidget
 import android.app.Activity
 import android.appwidget.AppWidgetManager
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RemoteViews
 import android.widget.SeekBar
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
 import androidx.databinding.DataBindingUtil
 import com.euzl.appwidget.databinding.ActivityAppWidgetConfigureBinding
 
@@ -16,6 +21,7 @@ class AppWidgetConfigure() : AppCompatActivity() {
 
     lateinit var binding: ActivityAppWidgetConfigureBinding
     var appWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID
+    lateinit var ivBackground: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +34,11 @@ class AppWidgetConfigure() : AppCompatActivity() {
         // set Data binding
         binding = DataBindingUtil.setContentView(this, R.layout.activity_app_widget_configure)
         binding.activity = this
+
+        // background image for opacity
+        ivBackground = findViewById<ImageView?>(R.id.ivWidgetBackground).apply {
+            setColorFilter(R.color.black)
+        }
 
         // intent로부터 Widget Id 얻기
         appWidgetId = intent?.extras?.getInt(
@@ -43,19 +54,19 @@ class AppWidgetConfigure() : AppCompatActivity() {
 
     fun onSeekBarProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
         binding.textView.text = "배경 투명도 조절 : ${progress*100/255}%"
-        binding.widgetPreview.background.alpha = progress
-
+        ivBackground.imageAlpha = binding.seekBar.progress
+//        ivBackground.setColorFilter(ContextCompat.getColor(applicationContext, R.color.black))
     }
 
     fun onConfirmClick(view: View) {
         val appWidgetManager: AppWidgetManager = AppWidgetManager.getInstance(this)
 
         // remote view를 통해 레이아웃 업데이트
-        RemoteViews(packageName, R.layout.example_appwidget).also { views ->
-            views.setTextViewText(R.id.textView, "투명도 ${binding.seekBar.progress*100/255}%")
-            // TODO: 배경색 투명도 조절
-            appWidgetManager.updateAppWidget(appWidgetId, views)
-
+        RemoteViews(packageName, R.layout.example_appwidget).apply {
+            setTextViewText(R.id.textView, "투명도 ${binding.seekBar.progress*100/255}%")
+            setInt(R.id.ivWidgetBackground, "setColorFilter", R.color.black)
+            setInt(R.id.ivWidgetBackground, "setImageAlpha", binding.seekBar.progress)
+            appWidgetManager.updateAppWidget(appWidgetId, this)
         }
 
         // app widget id 를 포함한 결과 반환
